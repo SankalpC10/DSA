@@ -1,7 +1,15 @@
+Linked List is a list of chained nodes. Each node has data and a pointer which point towards next node.
+struct Node
+{
+   int data;
+   Node *next;
+}
+
 1. Display Linked List
-
+   As vector is initialised in function, first create a vector with int type. As we don't need to modify the elements of linked list, create a new temporary node.
+   Node should have data of head.We will initialize pointer while loop function. Using while loop till temp!=NULL.
+   In while loop- insert the data of first node in vector and point the location to next element from linked list.
 Code:
-
    vector<int> displayList(Node *head)
   {
     vector<int>v;
@@ -13,3 +21,5 @@ Code:
     }
     return v;
   }
+  
+2. Sum The Nodes of Linked List
