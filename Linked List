@@ -52,3 +52,40 @@ Code:
         }
         return count;
     }
+    
+ 4.Maximum and Minimum in Linked List
+   The code is divided into two functions. The first returns maximum and second, the minimum.
+   Initialize the variable max as INT_MIN and while traversing check if elements in linked list are greater than our variable and if greater,update our variable with greater value
+   from LL.
+   Similarly, initialize variable min as INT_Max and keep updating value if we find any smaller element in LL.
+   Code:
+      int maximum(Node *head)
+   {
+       int max=INT_MIN;
+       Node *temp=head;
+       while (temp!=NULL)
+       {
+           if(temp->data>max)
+           {
+               max=temp->data;
+           }
+           temp=temp->next;
+       }
+       return max;
+   }
+
+   int minimum(Node *head)
+   {
+       //Your code here
+       int min=INT_MAX;
+       Node *temp=head;
+       while (temp!=NULL)
+       {
+           if(temp->data<min)
+           {
+               min=temp->data;
+           }
+           temp=temp->next;
+       }
+       return min;
+   }
