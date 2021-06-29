@@ -186,3 +186,30 @@ Code:
               curr=curr->next;
           }
       }
+9.Insert in a sorted Linked List
+   This problem can be divided into 2 cases:
+   1.If head is NULL or if given element is smaller than head.
+   3.Inserting in middle or end.
+   Initialize current node and new temp node. Check for case 1. If yes then make next of new node as head and assign current node as head.
+   In case 2 then traverrse till either last node or larger value than given. Then assign new node's next as current's next and new node as current's next.
+   Code:
+   Node * insertInSorted(Node * head, int data)
+   {
+    Node *new_node = new Node(data);
+      // Case 1: LL is empty OR first element is greater the new_node->value
+    if(head==NULL || head->data >= data)
+    {
+        new_node->next=head;
+        head= new_node;
+        return head;
+    }
+    // Case 2: new node is between or at the end of the LL
+    Node *current = head;
+    while(current->next != NULL && current->next->data <= data)
+    {
+        current = current->next;
+    }
+    new_node ->next = current->next;
+    current->next = new_node;
+    return head;
+}
