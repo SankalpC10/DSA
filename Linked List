@@ -249,3 +249,29 @@ Code:
               return temp;
           }
       }
+12.Linked List Delete at Position
+   Two corner cases to handle- when list is empty or deleting the first position.
+   Return NULL when list is empty and while deleting the first node,simply shift head to next element.
+   Now start traversing the list. Initialize a constant with value 1.
+   {/* List is 1->2->3->4->5, we need to delete 4th positin i.e 4. so we need to stop at p=2, when temp=3. Make node curr as temp->next,i.e 4.
+       Make temp->next(4) the curr->next(5).
+    */}
+   Code:
+      Node * deleteAtPosition(Node *head,int pos)
+      {
+          Node *temp=head;
+          if(head==NULL)
+          return NULL;
+          if(pos==1)
+          {
+              head=head->next;
+              return head;
+          }
+          for(int i=1;i<=pos-2;i++)
+          temp=temp->next;
+          if(temp==NULL||temp->next==NULL)
+          return head;
+          Node* cur=temp->next;
+          temp->next=cur->next;
+          return head;
+      }
