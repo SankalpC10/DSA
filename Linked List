@@ -7,8 +7,8 @@ struct Node
 
 1. Display Linked List
    As vector is initialised in function, first create a vector with int type. As we don't need to modify the elements of linked list, create a new temporary node.
-   Node should have data of head.We will initialize pointer while loop function. Using while loop till temp!=NULL.
-   In while loop- insert the data of first node in vector and point the location to next element from linked list.
+   Node should have data of head.We will initialize pointer while loop function. Using while loop, traverse till temp!=NULL.
+   In while loop - insert the data of first node in vector and point the location to next element from linked list. Then return vector.
 Code:
    vector<int> displayList(Node *head)
   {
@@ -23,3 +23,17 @@ Code:
   }
   
 2. Sum The Nodes of Linked List
+  Here,we need to return an int data type. So,we begin with creating an int variable. Then create a temporrary node which points at head. Start traversing till temp!=NULL,
+  while adding each data of temp to sum. Move temp pointer to next element. Return sum. 
+Code:
+   int sumOfElements(Node *head)
+   {
+      int sum=0;
+      Node *temp=head;
+      while(temp!=NULL)
+      {
+          sum+=temp->data;
+          temp=temp->next;
+      }
+      return sum;
+   }
