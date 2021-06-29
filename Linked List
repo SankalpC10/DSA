@@ -235,3 +235,17 @@ Code:
           curr->next=NULL;
           return head;
       }
+11.Delete Head of Linked List
+
+   Code:
+      Node * deleteHead(Node *head)
+      {
+          if(head==NULL)
+              return NULL;
+          else
+          {
+              Node *temp=head->next;
+              delete head;
+              return temp;
+          }
+      }
