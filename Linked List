@@ -88,3 +88,21 @@ Code:
        }
        return min;
       }
+      
+5.Search in a LL
+   The function type is boolean, so we make default return type as 0,if we are unable to find required eleent x in our LL.
+   Initialize temp node and traverse till end of LL. Return 1 if we find required element.
+  Code:
+      bool searchLinkedList(Node *head, int x)
+      {
+          Node *temp=head;
+          while(temp!=NULL)
+          {
+              if(temp->data==x)
+              {
+                  return 1;
+              }
+              temp=temp->next;
+          }
+          return 0;
+      }
