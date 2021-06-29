@@ -5,6 +5,7 @@ struct Node
    Node *next;
 }
 
+
 1. Display Linked List
    As vector is initialised in function, first create a vector with int type. As we don't need to modify the elements of linked list, create a new temporary node.
    Node should have data of head.We will initialize pointer while loop function. Using while loop, traverse till temp!=NULL.
@@ -37,3 +38,17 @@ Code:
       }
       return sum;
    }
+   
+3.Count nodes of linked list
+   Keep a variable count and keep incrementing it by 1 till we reach last node of linked list.
+  Code:
+      int getCount(struct Node* head){
+        int count=0;
+        Node *temp=head;
+        while(temp!=NULL)
+        {
+            count++;
+            temp=temp->next;
+        }
+        return count;
+    }
