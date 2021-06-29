@@ -24,7 +24,8 @@ Code:
   }
   
 2. Sum The Nodes of Linked List
-  Here,we need to return an int data type. So,we begin with creating an int variable. Then create a temporrary node which points at head. Start traversing till temp!=NULL,
+  Here,we need to return an int data type. So,we begin with creating an int variable.
+  Then create a temporrary node which points at head. Start traversing till temp!=NULL,
   while adding each data of temp to sum. Move temp pointer to next element. Return sum. 
 Code:
    int sumOfElements(Node *head)
@@ -55,8 +56,8 @@ Code:
     
  4.Maximum and Minimum in Linked List
    The code is divided into two functions. The first returns maximum and second, the minimum.
-   Initialize the variable max as INT_MIN and while traversing check if elements in linked list are greater than our variable and if greater,update our variable with greater value
-   from LL.
+   Initialize the variable max as INT_MIN and while traversing check if elements in linked list are greater than our variable.
+   If greater,update our variable with greater value from LL.
    Similarly, initialize variable min as INT_Max and keep updating value if we find any smaller element in LL.
    Code:
       int maximum(Node *head)
@@ -108,8 +109,8 @@ Code:
       
 6.Linked List Insertion
    The problem is divide into two parts, insert at beginning and insert at the end.
-   Insert in beginning is easier as we just need to create a new node temp containing value of x using struct and point next to head. Here, we don't need to explicitly handle the empty
-   LL as head would be null by default.
+   Insert in beginning is easier as we just need to create a new node temp containing value of x using struct and point next to head.
+   Here, we don't need to explicitly handle the empty LL as head would be null by default.
    In case of inserting at end, first we create new node.Then,we need to explictly handle case of empty linked list by returning temp instead of head as head is NULL.
    Secondly,if LL contains node(s),we need to traverse till the next element is NULL and point next element to the node we created.
    Code:
@@ -193,23 +194,44 @@ Code:
    Initialize current node and new temp node. Check for case 1. If yes then make next of new node as head and assign current node as head.
    In case 2 then traverrse till either last node or larger value than given. Then assign new node's next as current's next and new node as current's next.
    Code:
-   Node * insertInSorted(Node * head, int data)
-   {
-    Node *new_node = new Node(data);
-      // Case 1: LL is empty OR first element is greater the new_node->value
-    if(head==NULL || head->data >= data)
-    {
-        new_node->next=head;
-        head= new_node;
-        return head;
-    }
-    // Case 2: new node is between or at the end of the LL
-    Node *current = head;
-    while(current->next != NULL && current->next->data <= data)
-    {
-        current = current->next;
-    }
-    new_node ->next = current->next;
-    current->next = new_node;
-    return head;
-}
+      Node * insertInSorted(Node * head, int data)
+      {
+       Node *new_node = new Node(data);
+         // Case 1: LL is empty OR first element is greater the new_node->value
+       if(head==NULL || head->data >= data)
+       {
+           new_node->next=head;
+           head= new_node;
+           return head;
+       }
+       // Case 2: new node is between or at the end of the LL
+       Node *current = head;
+       while(current->next != NULL && current->next->data <= data)
+       {
+           current = current->next;
+       }
+       new_node ->next = current->next;
+       current->next = new_node;
+       return head;
+      }
+10.Delete Tail of Linked List
+   This problem can be divided into two cases:
+   1.List is empty or contain just one element. Return NULL.
+   2.Start traversing from head till we reach second last element of LL.
+     Delete the next node and assign next as NULL.
+   Code:
+     Node * deleteTail(Node *head)
+      {
+          if(head==NULL || head->next==NULL)
+          {
+              return NULL;
+          }
+          Node *curr=head;
+          while(curr->next->next!=NULL)
+          {
+              curr=curr->next;
+          }
+          delete (curr->next);
+          curr->next=NULL;
+          return head;
+      }
