@@ -73,7 +73,6 @@ Code:
        }
        return max;
      }
-
      int minimum(Node *head)
      {
        int min=INT_MAX;
@@ -164,4 +163,26 @@ Code:
          temp->next=slow->next;
          slow->next=temp;
          return head;
+      }
+      
+8.Insert at given position
+   If we think about solving this problem as previous one, we will end up getting segmentation fault as the function is void because we will be asking for unknown location.
+   Instead of creating node first, only create at time of inserting and traveese alongwith incimenting constant till we reach desired position.
+   Code:
+      void insertAtPosition(Node *head, int pos, int data)
+      {
+          Node *curr=head;
+          int p=0;
+          while(curr!=NULL)
+          {
+              p++;
+              if(p==pos)
+              {
+                  Node *temp=new Node(data);
+                  temp->next=curr->next;
+                  curr->next=temp;
+                  break;
+              }
+              curr=curr->next;
+          }
       }
