@@ -106,3 +106,30 @@ Code:
           }
           return 0;
       }
+      
+6.Linked List Insertion
+   The problem is divide into two parts, insert at beginning and insert at the end.
+   Insert in beginning is easier as we just need to create a new node temp containing value of x using struct and point next to head. Here, we don't need to explicitly handle the empty
+   LL as head would be null by default.
+   In case of inserting at end, first we create new node.Then,we need to explictly handle case of empty linked list by returning temp instead of head as head is NULL.
+   Secondly,if LL contains node(s),we need to traverse till the next element is NULL and point next element to the node we created.
+   Code:
+      Node *insertAtBegining(Node *head, int x) {
+          struct Node *temp = new Node(x);
+          temp->next=head;
+          return temp;
+       }
+       //Function to insert a node at the end of the linked list.
+       Node *insertAtEnd(Node *head, int x)  {
+        struct Node *temp=new Node(x);
+        if(head==NULL)
+        {
+           return temp;
+        }
+        Node *curr=head;
+        while(curr->next!=NULL){
+            curr=curr->next;
+        }
+        curr->next=temp;
+        return head;
+       }
