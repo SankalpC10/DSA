@@ -133,3 +133,35 @@ Code:
         curr->next=temp;
         return head;
        }
+7.Insert in Middle of Linked List
+   This is a challenging problem compared to previous ones and require some hit and trial.
+   Start with creating new node struct temp with value of x.
+   First,explicitly handle empty LL case as we will be using two pointer approach.
+   Initialize fast pointer as head->next and slow pointer as head.
+   {/*
+      If we keep fast as head, then we run into touble when given LL size is even.
+      Suppose, LL is 1 2 4 5 and we are given 3 to place in middle and we initialize fast as head.
+      Fast will move to 4 and slow to 2 with 1 iteration left when slow will move to 4 and we get output as 1 2 4 3 5, same applicable to every even sized LL.
+   */}
+   Next,comes traversing to middle element of LL. While fast moves two positions,slow moves one, so when fast reaches end, slow reaches middle.
+   Now, at the end of loop, we reached middle, first assign next of temp as next of slow and then assign temp as slow's next.
+   Return head to get required LL.
+   Code:
+      Node* insertInMiddle(Node* head, int x)
+      {
+         struct Node *temp=new Node(x);
+         if(head==NULL)
+         {
+             return temp;
+         }
+         Node *fast=head->next;
+         Node *slow=head;
+         while(fast!=NULL && fast->next!=NULL)
+         {   
+             fast=fast->next->next;
+             slow=slow->next;
+         }
+         temp->next=slow->next;
+         slow->next=temp;
+         return head;
+      }
