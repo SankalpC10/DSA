@@ -275,3 +275,30 @@ Code:
           temp->next=cur->next;
           return head;
       }
+13.Is Linked List Sorted
+   Keep two  boolean variables, one for increment or one for decrement.Set both of them to zero.
+   Handle corner cases of NULL and 1 element in List.
+   Check type of list if its incrementing or decrementing. If increment, then set decrement variable to zero and vice versa.
+   Now traverse through list to check fate of other variable.
+   If either of operator have value one, it means list is either decreasingly or increasingly, Sorted.
+   Code:
+      bool isSorted(Node * head)
+       {
+           Node *temp=head;
+           bool i=1;
+           bool d=1;
+           if(head==NULL || head->next==NULL)
+           {
+               return 1;
+           }
+           while(temp->next!=0)
+           {
+               if(temp->next->data>temp->data)
+                   d=0;
+
+               else if(temp->next->data<temp->data)
+                   i=0;
+               temp=temp->next;
+           }
+           return (i||d);
+       } 
