@@ -305,33 +305,51 @@ Code:
 14. Join Two Linked List
      Traverse till end of first linked list and assign to next, the head of second linked list.
      Code:
-     Node * joinTheLists(Node * head1, Node * head2)
-      {
-          Node *temp=head1;
-          while(temp->next!=0)
-          {
-              temp=temp->next;
-          }
-          temp->next=head2;
-          return head1;
-      }
+        Node * joinTheLists(Node * head1, Node * head2)
+         {
+             Node *temp=head1;
+             while(temp->next!=0)
+             {
+                 temp=temp->next;
+             }
+             temp->next=head2;
+             return head1;
+         }
 15.Remove duplicate element from sorted Linked List
    Make Node temp as head. Traverse the list while shifting temp to next position only when the next is different.
    If next is same then assign next as next->next.
    Code:
-   Node *removeDuplicates(Node *head)
-   {
-       Node *temp=head;
-       while(temp->next!=0)
-       {
-           if(temp->data==temp->next->data)
-           {
-               temp->next=temp->next->next;
-           }
-           else
-           {
-               temp=temp->next;
-           }
-       }
-       return head;
-   }
+      Node *removeDuplicates(Node *head)
+      {
+          Node *temp=head;
+          while(temp->next!=0)
+          {
+              if(temp->data==temp->next->data)
+              {
+                  temp->next=temp->next->next;
+              }
+              else
+              {
+                  temp=temp->next;
+              }
+          }
+          return head;
+      }
+16.Identical Linked List
+   Initialize Node temp1 as head1 and temp2 as head2. Traverse till either list ends.
+   If unidentical element is found, return false.
+   If loop ends,without returning false,that means both lists are identical. Return true. 
+   Code:
+      bool areIdentical(struct Node *head1, struct Node *head2)
+      {
+          Node *temp1=head1;
+          Node *temp2=head2;
+          while(temp1!=NULL && temp2!=NULL)
+          {
+              if(temp1->data!=temp2->data)
+                  return 0;
+              temp1=temp1->next;
+              temp2=temp2->next;
+          }
+          return 1;
+      }
