@@ -301,4 +301,17 @@ Code:
                temp=temp->next;
            }
            return (i||d);
-       } 
+       }
+14. Join Two Linked List
+     Traverse till end of first linked list and assign to next, the head of second linked list.
+     Code:
+     Node * joinTheLists(Node * head1, Node * head2)
+      {
+          Node *temp=head1;
+          while(temp->next!=0)
+          {
+              temp=temp->next;
+          }
+          temp->next=head2;
+          return head1;
+      }
