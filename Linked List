@@ -381,3 +381,24 @@ Code:
               return -1;
           return slow->data;
       }
+18. Reverse the Linked List
+   Initialize curr as head and make prev node as NULL.
+   { example- List is 1->2->3->4->NULL, our aim is to make it NULL<-1<-2<-3<-4.}
+   So, keep incrementing curr, till its not equal to NULL.
+   In loop, first get next element as curr->next.
+   as we need to make NULL as 1st element's next, do- curr->next=prev.{Till now, we have NULL<-1->2->3->4,with pointers
+   prev at NULL, curr at 1 and next at 2. for next iteration we need to point at prev, i.e 1, so make prev=curr and shift curr to next, so we can get 1-<2->3}.
+   Code:
+      struct Node* reverseList(struct Node *head)
+       {
+           Node *curr=head;
+           Node *prev=NULL;
+           while(curr!=NULL)
+           {
+               Node *next=curr->next;
+               curr->next=prev;
+               prev=curr;
+               curr=next;
+           }
+           return prev;
+       }
