@@ -353,3 +353,31 @@ Code:
           }
           return 1;
       }
+17.Nth node from the end
+   Concept- If we get second last element of Linked List, we can either try next->next==NULL.(Unfeasible for nth node from the end).
+                                                  or
+            We can use two pointer approach. Slow moving by delay of 1 than fast pointer. Such that,
+            When fast reaches last node, slow reaches second last node. 
+   So, initialize two Nodes fast and slow as head and a constant having valu 1(indicating we are at the first place of List).
+   Traverse till last element of linked list by moving fast by one step & incrementing the constant by 1 in each loop.
+   Start moving slow only when the gap between fast and slow becomes n. So, when fast reaches last node, slow is at nth node from last.
+   Also, after we reached end, the constant will give us size of linked list. If we are as nth node from end, where n>size of linked list, return -1.
+   Code:
+      int getNthFromLast(Node *head, int n)
+      {
+          Node *fast=head;
+          Node *slow=head;
+          int pos=1;
+          while(fast->next!=0)
+          {
+              if(pos>=n)
+              {
+                  slow=slow->next;
+              }
+              pos++;
+              fast=fast->next;
+          }
+          if(n>pos)
+              return -1;
+          return slow->data;
+      }
