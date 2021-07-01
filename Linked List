@@ -315,3 +315,23 @@ Code:
           temp->next=head2;
           return head1;
       }
+15.Remove duplicate element from sorted Linked List
+   Make Node temp as head. Traverse the list while shifting temp to next position only when the next is different.
+   If next is same then assign next as next->next.
+   Code:
+   Node *removeDuplicates(Node *head)
+   {
+       Node *temp=head;
+       while(temp->next!=0)
+       {
+           if(temp->data==temp->next->data)
+           {
+               temp->next=temp->next->next;
+           }
+           else
+           {
+               temp=temp->next;
+           }
+       }
+       return head;
+   }
