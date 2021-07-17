@@ -45,5 +45,39 @@
           }
           return s;
       }
+3.Implement two stacks in an array
+    To implement two stacks in an array, one stack must grows from left to right while other one grows from right to left. Initialize top as -1 and sizee as nth position.
+    1. Push to stack1:-
+       First increment top1 by one and assign value x to that position.
+    2.Push to stack2:-
+        Decrement top2 by one and assign value x to the position.
+    3.To remove top element from stack1:-
+        If top doesn't exist, then return -1. Otherwise, return current top1 and decrement current position by 1.
+    4.To remove top element from stack2:-
+       If top doesn't exist, then return -1. Otherwise, return current top2 and increment current position by 1.
+    Code:
+        //Function to push an integer into the stack1.
+        void twoStacks :: push1(int x)
+        {
+            arr[++top1]=x;
+        }
+
+        //Function to push an integer into the stack2.
+        void twoStacks ::push2(int x)
+        {
+            arr[--top2]=x;
+        }
+
+        //Function to remove an element from top of the stack1.
+        int twoStacks ::pop1()
+        {
+            return top1 == -1 ? -1:arr[top1--];
+        }
+
+        //Function to remove an element from top of the stack2.
+        int twoStacks :: pop2()
+        {
+            return top2 ==size ? -1:arr[top2++];
+        }
     
   
