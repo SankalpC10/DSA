@@ -1,0 +1,49 @@
+1. Removing Consecutive Duplicates
+    Push elements in stack only if it isn't equal to stack top.
+    Code:
+      string removeConsecutiveDuplicates(string s)
+      {
+          stack<char>st;
+          st.push(s[0]);
+          cout<<s[0];
+          for(int i=1;i<s.length();i++)
+          {
+              if(s[i]!=st.top())
+              {
+                  st.push(s[i]);
+                  cout<<s[i];
+              }
+          }
+      }
+2.Removing Consecutive Duplicates-2
+  This is recurrent version of above problem. If two same appears, then remove them and check consecutives from remaining string.
+  First create an empty string as return type is string. Create a stack. A better approach is to traverse from last element.
+  The logic is-
+    1.If stack is empty, then push the current element.
+    2.If current element is equal to stack top, it means they are consecutive, so pop the top.
+    3.If the current element is different from stack top, then push it to top.
+  Now, using while loop, keep joining the current string the stack tops and pop them to geet to next element.
+  
+  Code:
+    string removePair(string str)
+      {
+          stack<char>st;
+          int n=str.length();
+          string s="";
+          for(int i=n-1;i>=0;i--)
+          {
+              if(st.empty())
+              st.push(str[i]);
+          else if(st.top()==str[i])
+              st.pop();
+          else st.push(str[i]);
+          }
+          while(st.empty()==false)
+          {
+              s+=st.top();
+              st.pop();
+          }
+          return s;
+      }
+    
+  
