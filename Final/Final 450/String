@@ -1,0 +1,99 @@
+1. Reverse A String
+  https://leetcode.com/problems/reverse-string/
+  /*Write a function that reverses a string. The input string is given as an array of characters s.
+Example 1:
+Input: s = ["h","e","l","l","o"]
+Output: ["o","l","l","e","h"]
+Example 2:
+Input: s = ["H","a","n","n","a","h"]
+Output: ["h","a","n","n","a","H"]
+
+Constraints:
+1 <= s.length <= 105
+s[i] is a printable ascii character.
+Follow up: Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.*/
+
+Solution:-
+  class Solution {
+  public:
+      void reverseString(vector<char>& s) {
+          int i=0;
+          char end=s.size()-1;
+          while(i<end)
+          {
+              swap(s[i++],s[end--]);
+          }
+      }
+  };
+  
+2.Check whether String is Palindrome or not
+
+Given a string S, check if it is palindrome or not.
+
+Example 1:
+
+Input: S = "abba"
+Output: 1
+Explanation: S is a palindrome
+Example 2:
+
+Input: S = "abc" 
+Output: 0
+Explanation: S is not a palindrome
+ 
+
+Your Task:  
+You don't need to read input or print anything. Complete the function isPlaindrome() which accepts string S and returns a boolean value
+
+
+Expected Time Complexity: O(Length of S) 
+Expected Auxiliary Space: O(1) 
+
+
+Constraints:
+1 <= Length of S <= 105
+
+Solution:-
+  class Solution{
+  public:	
+    int isPlaindrome(string S)
+    {
+        bool a=1;
+        int i=0;
+        int e=S.size()-1;
+        while(i<e)
+        {
+            if(S[i]!=S[e])
+                return 0;
+            i++;
+            e--;
+        }
+        return a;
+    }
+  };
+  
+ 3.Print all the duplicates in the input string
+ Solution:-
+     #include <bits/stdc++.h>
+    using namespace std;
+    void printDups(string str)
+    {
+        map<char, int> count;
+        for (int i = 0; i < str.length(); i++) {
+            count[str[i]]++;
+        }
+
+        for (auto it : count) {
+            if (it.second > 1)
+                cout << it.first << ", count = " << it.second
+                     << "\n";
+        }
+    }
+    /* Driver code*/
+    int main()
+    {
+        string str = "test string";
+        printDups(str);
+        return 0;
+    }
+ 4.
