@@ -1,0 +1,11 @@
+6. Count the number of subset with given difference
+
+The problem can be simplified into 
+  
+      Count number of subsets with sum= (difference+array sum)/2;
+      
+       s1-s2=difference-----------------1
+       s1+s2=array sum------------------2
+     Add 1 and 2
+     
+ 
