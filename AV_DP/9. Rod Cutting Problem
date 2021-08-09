@@ -1,0 +1,81 @@
+9. Maximize The Cut Segment
+
+Approach- The problem is same as unbounded knapsack. As it has fixed values given, add all the values to array and get its size.
+a[]={x,y,z}
+Create table of size+1 and length+1.
+if i=0, t[i][j]= INT MIN ( as we can't cut rod with 0 number of cuts)
+if j=0, t[i][j] =0
+if(a[i-1]<=j)
+                {
+                    t[i][j]=max(1+t[i][j-a[i-1]],t[i-1][j]);
+                }
+ max(1+....) because we add count by 1.
+ While returning -
+              return t[3][n]<0 ? 0:t[3][n];
+  To handle INT_MIN initialization
+
+Given an integer N denoting the Length of a line segment. You need to cut the line segment in such a way that
+the cut length of a line segment each time is either x , y or z. Here x, y, and z are integers.
+After performing all the cut operations, your total number of cut segments must be maximum.
+
+Example 1:
+
+Input:
+N = 4
+x = 2, y = 1, z = 1
+Output: 4
+Explanation:Total length is 4, and the cut
+lengths are 2, 1 and 1.  We can make
+maximum 4 segments each of length 1.
+Example 2:
+
+Input:
+N = 5
+x = 5, y = 3, z = 2
+Output: 2
+Explanation: Here total length is 5, and
+the cut lengths are 5, 3 and 2. We can
+make two segments of lengths 3 and 2.
+
+Expected Time Complexity : O(N)
+Expected Auxiliary Space: O(N)
+
+class Solution
+{
+    public:
+    //Function to find the maximum number of cuts.
+    int maximizeTheCuts(int n, int x, int y, int z)
+    {
+        int a[]={x,y,z};
+        int t[3+1][n+1];
+        for(int i=0;i<3+1;i++)
+        {
+            for(int j=0;j<n+1;j++)
+            {
+                if(i==0)
+                {
+                    t[i][j]=INT_MIN;
+                }
+                if(j==0)
+                {
+                    t[i][j]=0;
+                }
+            }
+        }
+        for(int i=1;i<3+1;i++)
+        {
+            for(int j=1;j<n+1;j++)
+            {
+                if(a[i-1]<=j)
+                {
+                    t[i][j]=max(1+t[i][j-a[i-1]],t[i-1][j]);
+                }
+                else
+                {
+                    t[i][j]=t[i-1][j];
+                }
+            }
+        }
+        return t[3][n]<0 ? 0:t[3][n];
+    }
+};
