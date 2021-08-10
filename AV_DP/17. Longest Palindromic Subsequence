@@ -43,3 +43,6 @@ int main() {
 	cin>>s;
 	cout<<lps(s);
 }
+
+Input-AGBCBA 
+Output-5 
