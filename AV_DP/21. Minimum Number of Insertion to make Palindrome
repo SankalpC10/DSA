@@ -1,6 +1,7 @@
 21. Form a Palindrome
 
 Approach- minimum number of insertion = Length of string - length of lcs
+** As palindrome string have lcs=0 and lcs =1, when completely non- repeating elements.
 
 Given a string, find the minimum number of characters to be inserted to convert it to palindrome.
 For Example:
