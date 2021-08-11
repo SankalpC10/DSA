@@ -1,0 +1,58 @@
+20. Longest repeating Subsequence
+
+Approach- For repeating Subsequence, the character should offer atleast twice. So Take LCS of string with itself with i!=j.
+As the character which occurs only ones fail this test and we only get count of repeating subsequence.
+
+Given a string, find the length of the longest repeating subsequence such that the two subsequences don't have same string character at the same position,
+i.e., any i'th character in the two subsequences shouldn't have the same index in the original string.
+
+Example 1:
+
+Input: str = "axxxy"
+Output: 2
+Explanation: The longest repeating subsequenece
+is "xx".
+Example 2:
+
+Input: str = "aab"
+output: 1
+Explanation: The longest reapting subsequenece
+is "a".
+ 
+Expected Time Complexity: O(n2)
+Expected Space Complexity: O(n2)
+
+class Solution {
+	public:
+		int LongestRepeatingSubsequence(string str){
+		    int l=str.size();
+		    int t[l+1][l+1];
+		    for(int i=0;i<l+1;i++)
+		    {
+		        for(int j=0;j<l+1;j++)
+		        {
+		            if(i==0 || j==0)
+		            {
+		                t[i][j]=0;
+		            }
+		        }
+		    }
+		    for(int i=1;i<l+1;i++)
+		    {
+		        for(int j=1;j<l+1;j++)
+		        {
+		            
+		            if(str[i-1]==str[j-1]&& i!=j)
+		            {
+		                t[i][j]=1+t[i-1][j-1];
+		            }
+		            else
+		            {
+		                t[i][j]=max(t[i-1][j],t[i][j-1]);
+		            }
+		        }
+		    }
+		    return t[l][l];
+		}
+
+};
