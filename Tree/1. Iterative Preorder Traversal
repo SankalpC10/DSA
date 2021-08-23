@@ -1,0 +1,58 @@
+1.Preorder Traversal
+
+Given a binary tree, find its preorder traversal.
+
+Example 1:
+
+Input:
+        1      
+      /          
+    4    
+  /    \   
+4       2
+Output: 1 4 4 2 
+Example 2:
+
+Input:
+       6
+     /   \
+    3     2
+     \   / 
+      1 2
+Output: 6 3 1 2 2 
+
+Expected Time Complexity: O(N).
+Expected Auxiliary Space: O(N).
+
+Solution-
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+    
+    Node(int x){
+        data = x;
+        left = right = NULL;
+    }
+};
+*/
+
+//Function to return a list containing the preorder traversal of the tree.
+vector <int> preorder(Node* root)
+{
+    vector<int>v;
+    stack<Node*>s;
+    s.push(root);
+    while(!s.empty())
+    {
+        Node* temp=s.top();
+        s.pop();
+        v.push_back(temp->data);
+        if(temp->right!=NULL)
+            s.push(temp->right);
+        if(temp->left!=NULL)
+            s.push(temp->left);
+    }
+    return v;
+}
