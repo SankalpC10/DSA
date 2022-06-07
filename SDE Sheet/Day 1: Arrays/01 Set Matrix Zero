@@ -1,0 +1,45 @@
+Q. Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
+
+You must do it in place.
+
+1 2 3           1 0 3
+4 0 6     =>    0 0 0
+7 8 9           7 0 9
+
+Method 1: Brute Force
+/*if we get 0, we make rows and colums 0
+  Time Complexity: O(2*M*N)
+  Space Complexity: O(1)
+*/
+
+class Solution {
+public:
+    void setRow(vector<vector<int>>& matrix,int col,int row){
+        for(int j=0;j<col;j++){
+            if(matrix[row][j]!=0) matrix[row][j]='a';
+        }
+    }
+    void setCol(vector<vector<int>>& matrix,int row,int col){
+        for(int i=0;i<row;i++){
+            if(matrix[i][col]!=0) matrix[i][col]='a';
+        }
+    }
+    void setZeroes(vector<vector<int>>& matrix) {
+        int row=matrix.size(),col=matrix[0].size();
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(matrix[i][j]==0){
+                    setRow(matrix,col,i);
+                    setCol(matrix,row,j);
+                }
+            }
+        }
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(matrix[i][j]=='a') matrix[i][j]=0;
+            }
+        }
+    }
+};
+
+Method 2: 
